@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'android-apt'
+apply plugin: 'me.tatarka.retrolambda'
 
 android {
   compileSdkVersion 25
@@ -23,6 +24,9 @@ android {
 ext {
   daggerVersion = '2.7'
   javaxAnnotation = '1.0'
+  RxJava = '1.1.0'
+  Retrofit = '2.0.0-beta4'
+  Gson = '2.6.2'
 }
 
 dependencies {
@@ -37,4 +41,12 @@ dependencies {
   apt "com.google.dagger:dagger-compiler:$daggerVersion"
   compile "com.google.dagger:dagger:$daggerVersion"
   provided "javax.annotation:jsr250-api:$javaxAnnotation"
+
+  //Retrofit & GSON & RxJava
+  compile "io.reactivex:rxjava:$RxJava"
+  compile "io.reactivex:rxandroid:$RxJava"
+  compile "com.squareup.retrofit2:retrofit:$Retrofit"
+  compile "com.squareup.retrofit2:converter-gson:$Retrofit"
+  compile "com.squareup.retrofit2:adapter-rxjava:$Retrofit"
+  compile "com.google.code.gson:gson:$Gson"
 }
