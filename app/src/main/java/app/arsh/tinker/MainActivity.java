@@ -12,7 +12,7 @@ import retrofit2.Retrofit;
 
 public class MainActivity extends AppCompatActivity {
 
-  @Inject Retrofit retrofit;
+  @Inject Call<List<Country>> countryList;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
     ((TinkerApp) getApplication()).getNetComponent().inject(this);
 
-    retrofit.create(CountryService.class).countryList().enqueue(new Callback<List<Country>>() {
+    countryList.enqueue(new Callback<List<Country>>() {
       @Override public void onResponse(Call<List<Country>> call, Response<List<Country>> response) {
         Log.v("Tinker_", response.body().toString());
       }
